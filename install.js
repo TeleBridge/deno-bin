@@ -19,7 +19,9 @@ function filename() {
       throw new Error(`Not supported architecture: ${process.arch}`);
     }
     case "linux": {
-      return "deno-x86_64-unknown-linux-gnu.zip";
+      if (process.arch === "arm64") {
+        return "deno-linux-arm64.zip"
+      } else return "deno-x86_64-unknown-linux-gnu.zip";
     }
     default: {
       throw new Error(`Not a supported platform: ${process.platform}`);
@@ -40,9 +42,10 @@ function executableFilename() {
 function main() {
   return new Promise(resolve => {
 
-    const dlUrl =
+    let dlUrl =
       `https://github.com/denoland/deno/releases/download/v${pkg.version}/${filename()}`;
-    //console.log(dlUrl);
+    if (process.arch === "arm64") dlUrl = `https://github.com/LukeChannings/deno-arm64/releases/latest/download/${filename()}`
+      //console.log(dlUrl);
     const binPath = path.join(__dirname, "bin");
     const zipPath = path.join(
       fs.mkdtempSync(path.join(os.tmpdir(), "deno-bin")),

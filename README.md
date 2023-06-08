@@ -1,5 +1,7 @@
 # deno-bin ![npm](https://img.shields.io/npm/v/deno-bin?color=green)
 
+Big thanks to https://github.com/LukeChannings/deno-arm64 for providing arm64 bins of deno
+
 > Use [Deno][] via npm
 
 You can use [deno][] via npm or npx.
@@ -8,7 +10,7 @@ Note: This module installs deno at `node_modules/deno-bin/bin/deno`, and you can
 
 # Usage via npx
 
-`npx deno-bin` works like `deno` executable. For example, you can run a deno script `https://deno.land/std/examples/welcome.ts` like the below:
+`npx https://github.com/TeleBridge/deno-bin` works like `deno` executable. For example, you can run a deno script `https://deno.land/std/examples/welcome.ts` like the below:
 
 ```shellsession
 $ npx deno-bin run https://deno.land/std/examples/welcome.ts
@@ -37,7 +39,7 @@ Use in `scripts` in package.json.
 First install `deno-bin`:
 
 ```sh
-npm i --save-dev deno-bin
+npm i --save-dev https://github.com/TeleBridge/deno-bin
 ```
 
 (Note: This installs `deno` executable at `node_modules/deno-bin/bin/deno` internally.)
